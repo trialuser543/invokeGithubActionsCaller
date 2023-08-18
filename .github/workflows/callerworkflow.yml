@@ -1,0 +1,53 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CallerWorkFlow
+
+# Controls when the workflow will run
+on:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+    inputs:
+      calledworkflow_name:
+        description: 'Called Workflow Name for Triggering'
+        required: true
+        default: 'CalledWorkflow'
+
+      calledWorkflow_github_account:
+        description: 'Github Account Owner'
+        required: true
+        default: 'trialuser543'
+
+      calledWorkflow_repo_github:
+        description: 'Github Repository Name'
+        required: true
+        default: 'InvokeGithubActionsCalled'
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    env:
+      pat_token: ${{ secrets.PAT_TOKEN_GITHUB }}
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+      
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+
+      - name: Install dependencies
+        run: |
+          cd "$GITHUB_WORKSPACE/PythonScripts/"
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Trigger the Workflow
+        run: |
+          cd "$GITHUB_WORKSPACE/PythonScripts/"
+          python $GITHUB_WORKSPACE/PythonScripts/triggerscripts.py ${{ env.pat_token }} ${{ github.event.inputs.calledWorkflow_github_account }} ${{ github.event.inputs.calledWorkflow_repo_github }} ${{ github.event.inputs.calledWorkflow_name }} ${{ env.parameter1}} ${{env.parameter2}}
