@@ -1,6 +1,7 @@
 import os
 import requests
 import sys
+import json
 
 TOKEN = str(sys.argv[1])
 OWNER = str(sys.argv[2])
@@ -24,6 +25,9 @@ def trigger_workflow(Workflow_Name, parameter1, parameter2):
 			'parameter2': parameter2
 		}
 	}
+
+	url = "https://api.github.com/repos/{OWNER}/{REPO}/dispatches"
+	print("The URL is ", url)
 	
 	responseValue = requests.post(f"https://api.github.com/repos/{OWNER}/{REPO}/dispatches",json=data,headers=headers)
 	print(responseValue.content)
