@@ -15,7 +15,7 @@ def trigger_workflow(Workflow_Name, parameter1, parameter2):
 
 	headers = {
 		"Accept": "application/vnd.github.v3+json",
-		"Authorization": "Bearer {TOKEN}",
+		"Authorization": f"token {TOKEN}",
 	}
 	
 	data = {
