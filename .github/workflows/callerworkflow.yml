@@ -7,7 +7,7 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
     inputs:
-      calledworkflow_name:
+      calledWorkflow_name:
         description: 'Called Workflow Name for Triggering'
         required: true
         default: 'CalledWorkflow'
