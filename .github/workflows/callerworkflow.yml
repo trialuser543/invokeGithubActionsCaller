@@ -50,4 +50,4 @@ jobs:
       - name: Trigger the Workflow
         run: |
           cd "$GITHUB_WORKSPACE/pythonScripts/"
-          python $GITHUB_WORKSPACE/PythonScripts/triggerscripts.py ${{ env.pat_token }} ${{ github.event.inputs.calledWorkflow_github_account }} ${{ github.event.inputs.calledWorkflow_repo_github }} ${{ github.event.inputs.calledWorkflow_name }} ${{ env.parameter1}} ${{env.parameter2}}
+          python $GITHUB_WORKSPACE/pythonScripts/triggerscripts.py ${{ env.pat_token }} ${{ github.event.inputs.calledWorkflow_github_account }} ${{ github.event.inputs.calledWorkflow_repo_github }} ${{ github.event.inputs.calledWorkflow_name }} ${{ env.parameter1}} ${{env.parameter2}}
