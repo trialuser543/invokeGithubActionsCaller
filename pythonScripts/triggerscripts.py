@@ -26,11 +26,11 @@ def trigger_workflow(Workflow_Name, parameter1, parameter2):
 		}
 	}
 
-	url = "https://api.github.com/repos/{OWNER}/{REPO}/dispatches"
+	url = f"https://api.github.com/repos/{OWNER}/{REPO}/dispatches"
 	print("The URL is ", url)
 	
 	responseValue = requests.post(f"https://api.github.com/repos/{OWNER}/{REPO}/dispatches",json=data,headers=headers)
 	print(responseValue.content)
-	print("The response message is ", responsevalue.content)
+	print("The response message is ", responseValue.content)
 	
 trigger_workflow(Workflow_Name, parameter1, parameter2)
