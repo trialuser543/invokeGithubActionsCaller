@@ -29,7 +29,7 @@ jobs:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
     env:
-      pat_token: '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'
+      pat_token: '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'
       parameter1: '1234567890'
       parameter2: 'TestStringWithoutSpace'
       
